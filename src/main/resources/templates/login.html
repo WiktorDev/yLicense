@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="https://tailwindadmin.netlify.app/dist/styles.css">
+    <style>
+        .login{
+            background: url('https://wallpapercave.com/wp/wp4312264.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="h-screen font-sans login bg-cover">
+<div class="container mx-auto h-full flex flex-1 justify-center items-center">
+    <div class="w-full max-w-lg">
+        <div class="leading-loose">
+            <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl" th:action="@{/login}" method="POST">
+                <div th:if="${param.error}">
+                    <div class="bg-red-300 mb-2 border border-red-300 text-red-dark px-4 py-3 rounded relative" role="alert">
+                        <strong class="font-bold">Oops!</strong>
+                        <span class="block sm:inline">Niepoprawne haslo lub uzytkownik!</span>
+                    </div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">You have been logged out.</div>
+                </div>
+                <p class="text-gray-800 font-medium text-center text-lg font-bold">yLicense Login</p>
+                <div class="">
+                    <label class="block text-sm text-gray-00" for="username">Username</label>
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="username" name="username" type="text" required="" placeholder="User Name" aria-label="username">
+                </div>
+                <div class="mt-2">
+                    <label class="block text-sm text-gray-600" for="password">Password</label>
+                    <input class="w-full px-5  py-1 text-gray-700 bg-gray-200 rounded" id="password" name="password" type="password" placeholder="*******" aria-label="password" required>
+                </div>
+                <div class="mt-4 items-center justify-between">
+                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit" name="login-submit" id="login-submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
