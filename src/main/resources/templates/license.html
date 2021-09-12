@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments :: html_head"></head>
+<body>
+<div class="mx-auto bg-grey-400">
+    <div class="min-h-screen flex flex-col">
+        <header th:replace="fragments :: html_nav"></header>
+        <div class="flex flex-1">
+            <aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+                <div th:replace="fragments :: html_sidebar"></div>
+            </aside>
+            <main class="bg-white-300 flex-1 p-3 overflow-hidden">
+                <div class="flex flex-col">
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+                            <div th:if="${param.success}">
+                                <div class="bg-green-300 mb-2 border border-green-300 text-gren-dark px-4 py-3 rounded relative" style="margin: 20px" role="alert">
+                                    <strong class="font-bold">Sukces!</strong>
+                                    <span class="block sm:inline">Licencja zostala pomyslnie dodana!</span>
+                                </div>
+                            </div>
+                            <div class="px-6 py-2 border-b border-light-grey">
+                                <div class="font-bold text-xl">Licencje <button data-modal='centeredFormModal' class="modal-trigger bg-green-500 hover:bg-green-800 text-white font-bold px-4 rounded h-8">Dodaj nowa</button></div>
+                            </div>
+
+                            <div th:replace="modals :: license_create"></div>
+
+                            <div class="table-responsive">
+                                <table class="table text-grey-darkest">
+                                    <thead class="bg-grey-dark text-white text-normal">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Klucz licencyjny</th>
+                                        <th scope="col">Usluga</th>
+                                        <th scope="col">Wlasciciel</th>
+                                        <th scope="col">Data utworzenia</th>
+                                        <th scope="col">Akcja</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="data : ${licenses}">
+                                        <td th:text="${data.id}"></td>
+                                        <td th:text="${data.license_key}"></td>
+                                        <td th:text="${data.service}"></td>
+                                        <td th:text="${data.owner}"></td>
+                                        <td th:with="timeZone=${T(java.util.TimeZone).getTimeZone('CET')}" ><span th:text="${T(org.apache.commons.lang3.time.DateFormatUtils).format(data.createDate, 'yyyy-MM-dd HH:mm', timeZone)}"></span></td>
+                                        <td><button class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Zarzadzaj</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer class="bg-grey-darkest text-white p-2">
+            <div class="flex flex-1 mx-auto">&copy; 2021 ycode.xyz</div>
+        </footer>
+    </div>
+</div>
+<script th:src="@{/js/main.js}" type="text/javascript"></script>
+</body>
+</html>

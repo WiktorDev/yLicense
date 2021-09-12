@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <link rel="stylesheet" href="https://tailwindadmin.netlify.app/dist/styles.css">
+    <style>
+        .login{
+            background: url('https://wallpapercave.com/wp/wp4312264.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="h-screen font-sans login bg-cover">
+<div class="container mx-auto h-full flex flex-1 justify-center items-center">
+    <div class="w-full max-w-lg">
+        <div class="leading-loose">
+            <h1 class="text-white text-6xl text-center"><span th:text="${errorCode}"></span></h1>
+            <hr>
+            <h1 class="text-white  text-center" style="font-size: 30px"><span th:text="${errorMsg}"></span></h1>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
