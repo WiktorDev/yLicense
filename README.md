@@ -16,7 +16,6 @@ logging.level.org.hibernate.SQL=DEBUG
 logging.level.org.hibernate.type=TRACE
 
 ## Server configuration
-//Application port. Default 8080
 server.port = 8080
 server.error.whitelabel.enabled=false
 
