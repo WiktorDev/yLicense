@@ -1,5 +1,5 @@
 # yLicense
-Free license system
+Free license system (This is my first spring boot project)
 
 ### Configuration
 /src/main/resources/application.properties
