@@ -34,4 +34,7 @@ mvn package
 java -jar target/yLicense-0.0.1-SNAPSHOT.jar
 ```
 
-![Screenshot]('https://cdn.discordapp.com/attachments/675621761676476426/895027441754583060/unknown.png')
+
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/675621761676476426/895027441754583060/unknown.png" width="350" title="hover text">
+</p>
